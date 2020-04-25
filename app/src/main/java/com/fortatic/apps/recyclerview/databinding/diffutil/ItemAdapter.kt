@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fortatic.apps.recyclerview.databinding.diffutil.databinding.ItemRvBinding
 
 class ItemDiffUtil : DiffUtil.ItemCallback<Item>() {
     override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
@@ -29,25 +30,24 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffUtil()
         holder.bind(item)
     }
 
-    class ItemViewHolder private constructor(private val view: View) :
-        RecyclerView.ViewHolder(view) {
-
-        private val tvContent = view.findViewById<TextView>(R.id.tvContent)
+    class ItemViewHolder private constructor(private val binding: ItemRvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun from(parent: ViewGroup): ItemViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(
-                    R.layout.item_rv,
+                val binding = ItemRvBinding.inflate(
+                    layoutInflater,
                     parent,
                     false
                 )
-                return ItemViewHolder(view)
+                return ItemViewHolder(binding)
             }
         }
 
         fun bind(item: Item) {
-            tvContent.text = item.content
+            binding.item = item
+            binding.executePendingBindings()
         }
     }
 }

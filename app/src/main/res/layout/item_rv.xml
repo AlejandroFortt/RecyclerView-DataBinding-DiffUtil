@@ -1,39 +1,49 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/common_card_margin"
-    app:cardBackgroundColor="@color/colorCard"
-    app:cardCornerRadius="@dimen/common_card_radius"
-    app:cardUseCompatPadding="false">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <data>
+        <variable
+            name="item"
+            type="com.fortatic.apps.recyclerview.databinding.diffutil.Item" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_card_margin"
+        app:cardBackgroundColor="@color/colorCard"
+        app:cardCornerRadius="@dimen/common_card_radius"
+        app:cardUseCompatPadding="false">
 
-        <ImageView
-            android:id="@+id/ivItem"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_margin="24dp"
-            android:src="@drawable/ic_item"
-            tools:ignore="ContentDescription" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="24dp"
-            android:layout_toEndOf="@+id/ivItem"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="Este es un texto de prueba" />
+            <ImageView
+                android:id="@+id/ivItem"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="24dp"
+                android:src="@drawable/ic_item"
+                tools:ignore="ContentDescription" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp"
+                android:layout_toEndOf="@+id/ivItem"
+                android:gravity="center"
+                app:loadData="@{item}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                tools:text="Este es un texto de prueba" />
 
-</androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
