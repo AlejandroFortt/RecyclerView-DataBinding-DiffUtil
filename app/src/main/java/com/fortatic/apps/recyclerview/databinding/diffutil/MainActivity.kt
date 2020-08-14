@@ -2,9 +2,7 @@ package com.fortatic.apps.recyclerview.databinding.diffutil
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.MutableLiveData
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_rv.*
 
 class MainActivity : AppCompatActivity() {
 

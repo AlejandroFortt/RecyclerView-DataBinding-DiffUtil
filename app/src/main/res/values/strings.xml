@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">RecyclerViewDataBindingDiffUtil</string>
+    <string name="app_name">RecyclerView MVVM</string>
 </resources>
