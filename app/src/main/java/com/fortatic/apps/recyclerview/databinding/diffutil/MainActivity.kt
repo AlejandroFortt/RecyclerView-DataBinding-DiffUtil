@@ -2,31 +2,29 @@ package com.fortatic.apps.recyclerview.databinding.diffutil
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.MutableLiveData
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_rv.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val data = arrayListOf<Item>()
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadData()
-        setupRecycler()
-    }
-
-    private fun loadData() {
-        for (i in 1..20) {
-            data.add(Item(i, "Lorem$i ipsum dolor sit amet, consectetur adipisicing elit."))
-        }
-    }
-
-    private fun setupRecycler() {
         val adapter = ItemAdapter()
         rvItem.adapter = adapter
-        adapter.submitList(data)
+
+        /**
+         * Observamos a la lista declarada en MainViewModel.
+         * Cada vez que haya algún cambio, este observador se activará y
+         * se mandará una lista actualizada a ItemAdapter.
+         */
+        mainViewModel.data.observe(this, Observer {
+            // Enviamos la lista al adaptador.
+            adapter.submitList(it)
+        })
     }
 }
