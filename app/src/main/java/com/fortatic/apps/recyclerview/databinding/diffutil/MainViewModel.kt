@@ -14,7 +14,7 @@ class MainViewModel : ViewModel() {
         loadData()
     }
 
-    private fun loadData() {
+    fun loadData() {
         _data.value = mutableListOf(
             Item(1, "Hilt"),
             Item(2, "Paging"),
@@ -26,10 +26,8 @@ class MainViewModel : ViewModel() {
             Item(8, "App Startup"),
             Item(9, "DataBinding")
         )
-    }
 
-    fun shuffle() {
         // El método shuffle(), reordena la lista de forma aleatoria.
-        _data.value?.shuffle()
+        _data.value!!.shuffle()
     }
 }

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="common_card_margin">10dp</dimen>
     <dimen name="common_card_radius">12dp</dimen>
+    <dimen name="fab_elevation">8dp</dimen>
 </resources>
